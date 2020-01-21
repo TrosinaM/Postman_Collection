@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "c99c7e89-0d7e-43b2-8607-6ec87e798d8b",
+		"name": "Udemy_rest_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "APOD_NASA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2020-01-09&hd=false&api_key=HlghKYDgcsfdt5eaidGNw9xtb9ix8IATXLUs9pVz",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"planetary",
+						"apod"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "DEMO_KEY"
+						},
+						{
+							"key": "date",
+							"value": "2020-01-09"
+						},
+						{
+							"key": "hd",
+							"value": "false"
+						},
+						{
+							"key": "api_key",
+							"value": "HlghKYDgcsfdt5eaidGNw9xtb9ix8IATXLUs9pVz"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BIN",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://postb.in/1578862143991-5977225296664",
+					"protocol": "https",
+					"host": [
+						"postb",
+						"in"
+					],
+					"path": [
+						"1578862143991-5977225296664"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://ru.stackoverflow.com/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "ru.stackoverflow.com"
+					},
+					{
+						"key": "cache-control",
+						"value": "max-age=0"
+					},
+					{
+						"key": "upgrade-insecure-requests",
+						"value": "1"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+					},
+					{
+						"key": "sec-fetch-user",
+						"value": "?1"
+					},
+					{
+						"key": "accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "cross-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "navigate"
+					},
+					{
+						"key": "referer",
+						"value": "https://www.google.com/"
+					},
+					{
+						"key": "accept-encoding",
+						"value": "gzip, deflate, br"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+					},
+					{
+						"key": "cookie",
+						"value": "prov=bb51036e-ade0-ba39-9ec7-f8ea032221fc; _ga=GA1.2.457882127.1578862731; _gid=GA1.2.339511721.1578862731; __qca=P0-727032368-1578862731126; __gads=ID=380fbf33d8e90c41:T=1578862731:S=ALNI_MYWj2EJDwiOdLJV6vcdxu_BKnvqwQ"
+					}
+				],
+				"url": {
+					"raw": "https://ru.stackoverflow.com/",
+					"protocol": "https",
+					"host": [
+						"ru",
+						"stackoverflow",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http swapi.co/api",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13dbfbb3-7c9f-4b83-a71e-591686c0c4ed",
+						"exec": [
+							"//Check response format json",
+							"pm.test(\"Correct response format json\", function() {",
+							"    pm.response.to.have.jsonBody",
+							"});",
+							"//Check All declared fields in the response",
+							"pm.test(\"Check declared all fields\", function() {",
+							"   const jsonData=pm.response.json()",
+							"   pm.expect(jsonData).to.have.property(\"people\");",
+							"   pm.expect(jsonData).to.have.property(\"planets\");",
+							"   pm.expect(jsonData).to.have.property(\"films\");",
+							"   pm.expect(jsonData).to.have.property(\"species\");",
+							"   pm.expect(jsonData).to.have.property(\"vehicles\");",
+							"   pm.expect(jsonData).to.have.property(\"starships\");",
+							"});",
+							"//Check Field value is not NULL",
+							"pm.test(\"Check if value is not NULL\", function() {",
+							"   var jsonData=pm.response.json()",
+							"   pm.expect(jsonData.people).not.equal(null);",
+							"   pm.expect(jsonData.planets).not.equal(null);",
+							"   pm.expect(jsonData.films).not.equal(null);",
+							"   pm.expect(jsonData.species).not.equal(null);",
+							"   pm.expect(jsonData.vehicles).not.equal(null);",
+							"   pm.expect(jsonData.starships).not.equal(null)",
+							"});",
+							"//Check Field value is not empty",
+							"pm.test(\"Check if value is not empty\", function() {",
+							"   var jsonData=pm.response.json()",
+							"   pm.expect(jsonData.people).not.equal();",
+							"   pm.expect(jsonData.planets).not.equal();",
+							"   pm.expect(jsonData.films).not.equal();",
+							"   pm.expect(jsonData.species).not.equal();",
+							"   pm.expect(jsonData.vehicles).not.equal();",
+							"   pm.expect(jsonData.starships).not.equal()",
+							"});",
+							"//Check if field corresponds the specific value",
+							"pm.test(\"Field corresponds the specific value\", function() {",
+							"    var jsonData=pm.response.json()",
+							"    pm.expect(jsonData.people).to.equal(\"https://swapi.co/api/people/\");",
+							"    pm.expect(jsonData.planets).to.equal(\"https://swapi.co/api/planets/\");",
+							"    pm.expect(jsonData.films).to.equal(\"https://swapi.co/api/films/\");",
+							"    pm.expect(jsonData.species).to.equal(\"https://swapi.co/api/species/\");",
+							"    pm.expect(jsonData.vehicles).to.equal(\"https://swapi.co/api/vehicles/\");",
+							"    pm.expect(jsonData.starships).to.equal(\"https://swapi.co/api/starships/\");",
+							"});",
+							"//Status code is 200",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"//Response time is less than 200ms",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"//Check is specific header",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"//Specific header with specific value",
+							"pm.test(\"Specific header with a specific value\", function () {",
+							"    pm.response.to.be.header(\"Content-Type\",\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"header\": {\n    \"version\": \"3.2\",\n\t\"parentEventId\": \"Dfgrdt809427364&*()_:M?}M><frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty549612fdsghjuk,mnbvawuuq\",\n    \"eventId\": \"Dfgrdt809427364&*()_:M?}M><frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty549612fdsghjuk,mnbvawqju\",\n    \"correlationId\": \"CorrelationId12345Dfgrdt809427364&*()_:>M?}M>frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty5h6496\",\n    \"eventTimestamp\": \"2019-01-03T19:34:50.000000\",\n    \"eventType\": \"INVENTORY_ADJUST\",\n    \"requestTimestamp\": \"2019-01-03T19:34:50.000000\",\n    \"source\": \"WINE\",\n    \"fromLocation\": {\n      \"com.nordstrom.commons.invevent.models.avro.Location\": {\n        \"facility\": {\n          \"id\": 123455,\n          \"type\": {\n            \"string\": \"Wdsefef\"\n          }\n        },\n        \"logical\": {\n          \"id\": 1235,\n          \"type\": {\n          \"string\": \"W35r4tgjf\",\n          \"rmsPhysicalLocation\": {\n\t\t  \"id\": \"-9223372036854775808\",\n\t\t  \"type\": \"S\"\n\t\t  }\n\t\t}\n    },\n    \"toLocation\": {\n      \"com.nordstrom.commons.invevent.models.avro.Location\": {\n        \"facility\": {\n          \"id\": 1234567895,\n          \"type\": {\n            \"string\": \"W\"\n          }\n        },\n        \"logical\": {\n          \"id\": 12345,\n          \"type\": {\n            \"string\": \"W\"\n          }\n        },\n        \"rmsPhysicalLocation\":{\n\t\t\"id\": \"4544682115\",\n\t\t\"type\": \"S\"\n\t\t}\n    },\n    \"userId\": null\n  },\n  \"receipt\": null,\n  \"rtv\": null,\n  \"inventoryAdjustment\": {\n    \"com.nordstrom.commons.invevent.models.avro.InventoryAdjustment\": {\n      \"channel\": \"FULL_PRICE\",\n      \"operationNo\": {\"long\" : 12302055456},\n      \"operationType\": { \"string\" : \"T\"},\n      \"inventoryAdjustmentDetails\": \n        {\n          \"product\": [\n            {\n              \"productId\": \"86944863\",\n              \"productType\": \"RMS\"\n            },\n            {\n              \"productId\": \"1236750000\",\n              \"productType\": \"EPM\"\n            }\n          ],\n          \"quantity\": -1,\n          \"fromDisposition\": \"StockOnHand\",\n          \"toDisposition\": \"Unusable\",\n          \"reasonCode\": \"RS\"\n        }\n    }\n  },\n   \"transfer\": null,\n  \"shipment\": null,\n  \"stockLedgerCorrection\": null\n      }\n    }\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://48386340-a2fe-4874-b388-a741dc227707.mock.pstmn.io/action",
+					"protocol": "https",
+					"host": [
+						"48386340-a2fe-4874-b388-a741dc227707",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"action"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http swapi.co/api",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"header\": {\n    \"version\": \"3.2\",\n\t\"parentEventId\": \"Dfgrdt809427364&*()_:M?}M><frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty549612fdsghjuk,mnbvawuuq\",\n    \"eventId\": \"Dfgrdt809427364&*()_:M?}M><frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty549612fdsghjuk,mnbvawqju\",\n    \"correlationId\": \"CorrelationId12345Dfgrdt809427364&*()_:>M?}M>frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty5h6496\",\n    \"eventTimestamp\": \"2019-01-03T19:34:50.000000\",\n    \"eventType\": \"INVENTORY_ADJUST\",\n    \"requestTimestamp\": \"2019-01-03T19:34:50.000000\",\n    \"source\": \"WINE\",\n    \"fromLocation\": {\n      \"com.nordstrom.commons.invevent.models.avro.Location\": {\n        \"facility\": {\n          \"id\": 123455,\n          \"type\": {\n            \"string\": \"Wdsefef\"\n          }\n        },\n        \"logical\": {\n          \"id\": 1235,\n          \"type\": {\n          \"string\": \"W35r4tgjf\",\n          \"rmsPhysicalLocation\": {\n\t\t  \"id\": \"-9223372036854775808\",\n\t\t  \"type\": \"S\"\n\t\t  }\n\t\t}\n    },\n    \"toLocation\": {\n      \"com.nordstrom.commons.invevent.models.avro.Location\": {\n        \"facility\": {\n          \"id\": 1234567895,\n          \"type\": {\n            \"string\": \"W\"\n          }\n        },\n        \"logical\": {\n          \"id\": 12345,\n          \"type\": {\n            \"string\": \"W\"\n          }\n        },\n        \"rmsPhysicalLocation\":{\n\t\t\"id\": \"4544682115\",\n\t\t\"type\": \"S\"\n\t\t}\n    },\n    \"userId\": null\n  },\n  \"receipt\": null,\n  \"rtv\": null,\n  \"inventoryAdjustment\": {\n    \"com.nordstrom.commons.invevent.models.avro.InventoryAdjustment\": {\n      \"channel\": \"FULL_PRICE\",\n      \"operationNo\": {\"long\" : 12302055456},\n      \"operationType\": { \"string\" : \"T\"},\n      \"inventoryAdjustmentDetails\": \n        {\n          \"product\": [\n            {\n              \"productId\": \"86944863\",\n              \"productType\": \"RMS\"\n            },\n            {\n              \"productId\": \"1236750000\",\n              \"productType\": \"EPM\"\n            }\n          ],\n          \"quantity\": -1,\n          \"fromDisposition\": \"StockOnHand\",\n          \"toDisposition\": \"Unusable\",\n          \"reasonCode\": \"RS\"\n        }\n    }\n  },\n   \"transfer\": null,\n  \"shipment\": null,\n  \"stockLedgerCorrection\": null\n      }\n    }\n  }\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://48386340-a2fe-4874-b388-a741dc227707.mock.pstmn.io/action",
+							"protocol": "https",
+							"host": [
+								"48386340-a2fe-4874-b388-a741dc227707",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"action"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jan 2020 21:57:18 GMT"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-rWRPj2mTYaJV0RsNNd+2EgzcJ9Q\""
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=933152fcdd1d9370"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=af743c2a3f62049d"
+						},
+						{
+							"key": "Content-Length",
+							"value": "75"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": {\n        \"name\": \"test_action\",\n        \"message\": \"succesess\"\n    }\n}"
+				},
+				{
+					"name": "http swapi.co/api",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"header\": {\n    \"version\": \"3.2\",\n\t\"parentEventId\": \"Dfgrdt809427364&*()_:M?}M><frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty549612fdsghjuk,mnbvawuuq\",\n    \"eventId\": \"Dfgrdt809427364&*()_:M?}M><frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty549612fdsghjuk,mnbvawqju\",\n    \"correlationId\": \"CorrelationId12345Dfgrdt809427364&*()_:>M?}M>frer~!@#$%^&*()jnutt56HJKL:P{_)(*&^%$#@!NBVdserty5h6496\",\n    \"eventTimestamp\": \"2019-01-03T19:34:50.000000\",\n    \"eventType\": \"INVENTORY_ADJUST\",\n    \"requestTimestamp\": \"2019-01-03T19:34:50.000000\",\n    \"source\": \"WINE\",\n    \"fromLocation\": {\n      \"com.nordstrom.commons.invevent.models.avro.Location\": {\n        \"facility\": {\n          \"id\": 123455,\n          \"type\": {\n            \"string\": \"Wdsefef\"\n          }\n        },\n        \"logical\": {\n          \"id\": 1235,\n          \"type\": {\n          \"string\": \"W35r4tgjf\",\n          \"rmsPhysicalLocation\": {\n\t\t  \"id\": \"-9223372036854775808\",\n\t\t  \"type\": \"S\"\n\t\t  }\n\t\t}\n    },\n    \"toLocation\": {\n      \"com.nordstrom.commons.invevent.models.avro.Location\": {\n        \"facility\": {\n          \"id\": 1234567895,\n          \"type\": {\n            \"string\": \"W\"\n          }\n        },\n        \"logical\": {\n          \"id\": 12345,\n          \"type\": {\n            \"string\": \"W\"\n          }\n        },\n        \"rmsPhysicalLocation\":{\n\t\t\"id\": \"4544682115\",\n\t\t\"type\": \"S\"\n\t\t}\n    },\n    \"userId\": null\n  },\n  \"receipt\": null,\n  \"rtv\": null,\n  \"inventoryAdjustment\": {\n    \"com.nordstrom.commons.invevent.models.avro.InventoryAdjustment\": {\n      \"channel\": \"FULL_PRICE\",\n      \"operationNo\": {\"long\" : 12302055456},\n      \"operationType\": { \"string\" : \"T\"},\n      \"inventoryAdjustmentDetails\": \n        {\n          \"product\": [\n            {\n              \"productId\": \"86944863\",\n              \"productType\": \"RMS\"\n            },\n            {\n              \"productId\": \"1236750000\",\n              \"productType\": \"EPM\"\n            }\n          ],\n          \"quantity\": -1,\n          \"fromDisposition\": \"StockOnHand\",\n          \"toDisposition\": \"Unusable\",\n          \"reasonCode\": \"RS\"\n        }\n    }\n  },\n   \"transfer\": null,\n  \"shipment\": null,\n  \"stockLedgerCorrection\": null\n      }\n    }\n  }\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://48386340-a2fe-4874-b388-a741dc227707.mock.pstmn.io",
+							"protocol": "https",
+							"host": [
+								"48386340-a2fe-4874-b388-a741dc227707",
+								"mock",
+								"pstmn",
+								"io"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jan 2020 21:54:38 GMT"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-rWRPj2mTYaJV0RsNNd+2EgzcJ9Q\""
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=933152fcdd1d9370"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=af743c2a3f62049d"
+						},
+						{
+							"key": "Content-Length",
+							"value": "139"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": {\n        \"name\": \"test\",\n        \"message\": \"succesess\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "https://swapi.co/api/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "21954938-750a-4f46-b36b-4c1058bfb52a",
+						"exec": [
+							"//JSON Schema ",
+							"var data = JSON.parse(responseBody);",
+							"var schema = {",
+							"    \"type\" : \"object\",",
+							"    \"required\": [\"name\",\"homeworld\",\"films\",\"starships\",\"species\",\"vehicles\"],",
+							"    \"properties\": {",
+							"        \"name\": {\"type\":\"string\"},",
+							"        \"homeworld\": {\"type\":\"string\"},",
+							"        \"films\": {",
+							"            \"type\":\"array\",",
+							"            \"items\": {\"type\":\"string\"}",
+							"        },",
+							"        \"starships\": {",
+							"            \"type\":\"array\",",
+							"            \"items\": {\"type\":\"string\"}",
+							"        },",
+							"        \"species\": {",
+							"            \"type\":\"array\",",
+							"            \"items\": {\"type\":\"string\"}",
+							"        },",
+							"        \"vehicles\": {",
+							"            \"type\":\"array\",",
+							"            \"items\": {\"type\":\"string\"}",
+							"        },",
+							"    }",
+							"};",
+							"pm.test('ResponseBody is correct', function(){",
+							"    pm.expect(tv4.validate(data,schema)).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://swapi.co/api/people/1",
+					"protocol": "https",
+					"host": [
+						"swapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"people",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
